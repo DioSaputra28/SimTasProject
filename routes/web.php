@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('admin.dashboard');
+    return view('admin.dashboard',[
+        "title" => "Dashboard"
+    ]);
 });
-Route::get('/karyawan', function () {
-    return view('admin.karyawan.table');
-});
+Route::resource('/pengguna', AdminController::class);
