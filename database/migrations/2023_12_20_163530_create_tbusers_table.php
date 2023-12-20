@@ -8,15 +8,17 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     * @return void
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('tbuser', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('namalengkap', 50);
+            $table->enum('jeniskelamin', ['Laki-Laki', 'Perempuan']);
+            $table->string('username', 50);
+            $table->string('password', 225);
+            $table->enum('level', ['Administrator', 'Kepala TU', 'Karyawan']);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -24,9 +26,11 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     * 
+     * @return void
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tbuser');
     }
 };
