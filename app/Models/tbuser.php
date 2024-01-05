@@ -12,7 +12,7 @@ class tbuser extends Model
         'namalengkap',
         'jeniskelamin',
         'username',
-        'password',
+        'katasandi',
         'level',
     ];
 

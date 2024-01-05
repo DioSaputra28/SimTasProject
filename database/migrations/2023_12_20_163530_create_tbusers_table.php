@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('namalengkap', 50);
             $table->enum('jeniskelamin', ['Laki-Laki', 'Perempuan']);
             $table->string('username', 50);
-            $table->string('password', 225);
+            $table->string('katasandi', 225);
             $table->enum('level', ['Administrator', 'Kepala TU', 'Karyawan']);
             $table->rememberToken();
             $table->timestamps();
