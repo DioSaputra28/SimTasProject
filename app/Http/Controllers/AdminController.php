@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\tbuser;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
@@ -11,9 +13,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.pengguna.table',[
-            "title" => "Pengguna"
-        ]);
+       $tbuser = Tbuser::orderBy('created_at','DESC')->get();
+       return view('admin.pengguna.table',compact('tbuser'),[
+        "title" => "Data Pengguna"
+       ]);
     }
 
     /**
@@ -21,7 +24,9 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pengguna.create',[
+            "title" => "Tambah Pengguna"
+        ]);
     }
 
     /**
@@ -29,7 +34,10 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        tbuser::create($request->all());
+
+        return redirect()->route('pengguna.index')->with('sukses', 'Pengguna baru di Tambahkan.');
     }
 
     /**
