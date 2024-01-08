@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\JadwalController;  
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,3 +21,4 @@ Route::get('/', function () {
     ]);
 });
 Route::resource('/pengguna', AdminController::class);
+Route::resource('/jadwal', JadwalController::class);

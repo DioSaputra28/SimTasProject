@@ -45,7 +45,11 @@ class AdminController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $tbuser = Tbuser::findOrFail($id);
+
+        return view('admin.pengguna.detail',[
+            "title" => "Detail Pengguna"
+        ], compact('tbuser'));
     }
 
     /**
@@ -53,7 +57,11 @@ class AdminController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $tbuser = Tbuser::findOrFail($id);
+
+        return view('admin.pengguna.edit',[
+            "title" => "Detail Pengguna"
+        ], compact('tbuser'));
     }
 
     /**
@@ -61,7 +69,11 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $tbuser = Tbuser::findOrFail($id);
+
+        $tbuser->update($request->all());
+
+        return redirect()->route('pengguna.index')->with('sukses', 'Pengguna Telah di update.');
     }
 
     /**
@@ -69,6 +81,10 @@ class AdminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $tbuser = Tbuser::findOrFail($id);
+
+        $tbuser->delete();
+
+        return redirect()->route('pengguna.index')->with('sukses', 'Pengguna Telah di Hapus.');
     }
 }

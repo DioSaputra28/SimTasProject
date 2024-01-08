@@ -1,3 +1,4 @@
+use App\Http\Controllers\JadwalController;
 @extends('admin.main')
 
 @section('container')
@@ -7,8 +8,8 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
 	<div class="card-header py-3 d-flex justify-content-end">
-        <h4 class="m-0 font-weight-bold text-primary">List Pengguna</h4>
-        <a href="{{ route('pengguna.create') }}" class="btn btn-primary ml-auto"><i class="fa fa-plus" aria-hidden="true"></i></i></a>  
+        <h4 class="m-0 font-weight-bold text-primary">List Tugas</h4>
+        <a href="{{ route('jadwal.create') }}" class="btn btn-primary ml-auto"><i class="fa fa-plus" aria-hidden="true"></i></i></a>  
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
