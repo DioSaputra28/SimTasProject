@@ -13,8 +13,13 @@ class tbuser extends Model
         'jeniskelamin',
         'username',
         'katasandi',
-        'level',
+        'level'
     ];
+
+    public function tbjadwal()
+    {
+        return $this->hasMany(Jadwal::class);
+    } 
 
     public function getRememberToken()
     {

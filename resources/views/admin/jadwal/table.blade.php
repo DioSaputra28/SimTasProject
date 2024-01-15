@@ -1,4 +1,3 @@
-use App\Http\Controllers\JadwalController;
 @extends('admin.main')
 
 @section('container')
@@ -22,36 +21,34 @@ use App\Http\Controllers\JadwalController;
 			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 				<thead>
 					<tr>
-						<th class="col-1">Id</th>
-						<th>Nama Lengkap</th>
-						<th>Jenis Kelamin</th>
-						<th>Username</th>
-						<th>Status</th>
+						<th class="col-1">Id </th>
+						<th>Petugas</th>
+						<th>Blok Ruang</th>
 						<th>Aksi</th>
 					</tr>
 				</thead>
 				<tbody>
-					@if ($tbuser->count() > 0)
-						@foreach ($tbuser as $user)
-							<tr>
-								<td>{{ $loop->iteration }}</td>
-								<td>{{ $user->namalengkap }}</td>
-								<td>{{ $user->jeniskelamin }}</td>
-								<td>{{ $user->username }}</td>
-								<td>{{ $user->level }}</td>
-								<td>
-									<div role="group" aria-label="Contoh Biasa" class="d-flex">
-										<a href="{{ route('pengguna.show', ['pengguna' => $user->id]) }}" class="btn btn-secondary m-1"><i class="fa-solid fa-file"></i></a>
-										<a href="{{ route('pengguna.edit', ['pengguna' => $user->id]) }}" class="btn btn-warning m-1"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-										<form action="{{ route('pengguna.destroy', ['pengguna' => $user->id]) }}" method="POST" onsubmit="return confirm('Yakin ingin Hapus?')">
+					@if ($tbjadwal->count() > 0)
+						@foreach ($petugas as $jadwal)
+							
+						<tr>
+							<td>{{ $loop->iteration }}</td>
+							<td>{{ $jadwal->tbuser->id }}</td>
+							<td>{{ $jadwal->blokruang }}</td>
+							<td>
+								<div role="group" aria-label="Contoh Biasa" class="d-flex">
+									<a href="{{ route('pengguna.show', ['pengguna' => $jadwal->tbuser->id]) }}" class="btn btn-secondary m-1"><i class="fa-solid fa-file"></i></a>
+									<a href="{{ route('pengguna.edit', ['pengguna' => $jadwal->tbuser->id]) }}" class="btn btn-warning m-1"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+									<form action="{{ route('pengguna.destroy', ['pengguna' => $jadwal->tbuser->id]) }}" method="POST" onsubmit="return confirm('Yakin ingin Hapus?')">
 										@csrf
 										@method('DELETE')
 										<button class="btn btn-danger m-1" ><i class="fa fa-trash" aria-hidden="true"></i></button>
-										</form>
-									</div>
-								</td>
-							</tr>
+									</form>
+								</div>
+							</td>
+						</tr>
 						@endforeach
+					
 					@endif
 				</tbody>
 			</table>

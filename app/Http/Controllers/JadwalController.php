@@ -14,10 +14,11 @@ class JadwalController extends Controller
      */
     public function index()
     {
+        $petugas = Jadwal::with('tbuser')->paginate(2);
         $tbjadwal = Jadwal::orderBy('created_at','DESC')->get();
-        return view('admin.Jadwal.table',compact('tbjadwal'),[
-            "title" => "Jadwal"
-       ]);
+        return view('admin.jadwal.table',compact('tbjadwal'),[
+            "title" => "Jadwal",
+       ],compact('petugas') );
     }
 
     /**
@@ -25,12 +26,11 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        $user['id'] = Tbuser::all();
-
+        $namaPetugas = tbuser::all();
         return view('admin.jadwal.create',[
-            "title" => "Tambah Jadwal",
-            "tbuser" => Tbuser::all()
-        ]);
+            "title" => "Tambah Jadwal"
+           
+           ], compact('namaPetugas'));
     }
 
     /**

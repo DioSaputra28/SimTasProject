@@ -34,7 +34,7 @@
 						@foreach ($tbuser as $user)
 							<tr>
 								<td>{{ $loop->iteration }}</td>
-								<td>{{ $user->namalengkap }}</td>
+								<td>{{ $user->namalengkap }}</td>	
 								<td>{{ $user->jeniskelamin }}</td>
 								<td>{{ $user->username }}</td>
 								<td>{{ $user->level }}</td>

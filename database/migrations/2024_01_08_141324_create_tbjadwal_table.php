@@ -12,10 +12,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbjadwal', function (Blueprint $table) {
-            $table->id();
-            $table->integer('iduser');
+            $table->id('idjadwal');
+            $table->integer('id_user');
             $table->string('blokruang', 100);
-            $table->enum('keterangan', [1, 0]);
+            $table->enum('keterangan', [1, 0])->default(1);
             $table->timestamps();
         });
     }

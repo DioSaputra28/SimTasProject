@@ -11,13 +11,13 @@ class Jadwal extends Model
 
     protected $fillable = [
         'idjadwal',
-        'iduser',
+        'id_user',
         'blokruang',
         'keterangan',
     ];
 
-    public function user()
+    public function tbuser()
     {
-        return $this->belongsTo('App\Models\Tbuser', 'iduser', 'id');
+        return $this->belongsTo(tbuser::class);
     }
 }

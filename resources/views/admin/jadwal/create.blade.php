@@ -14,25 +14,17 @@
 			@csrf
 			<div class="col-md-6">
 			  <label for="inputPassword4" class="form-label">Petugas</label>
-			  <select class="form-control" aria-label="Default select example" name="jeniskelamin">
+			  <select class="form-control" aria-label="Default select example" name="iduser">
 				<option disabled selected>>--Petugas--<</option>
-                @foreach ($tbuser as $user)
-                    <option value="{{ $user->id }}">{{ $user->namalengkap }}</option>
+                @foreach ($namaPetugas as $petugas)
+                    <option value="{{ $petugas->id }}">{{ $petugas->namalengkap }}</option>
                 @endforeach
 			  </select>
 			</div>
-			<div class="col-6">
-			  <label for="inputAddress" class="form-label">Username</label>
-			  <input type="text" class="form-control" placeholder="Username" name="username" required>
-			</div>
-			<div class="col-6">
-			  <label for="inputAddress2" class="form-label">Kata Sandi</label>
-			  <input type="text" class="form-control" placeholder="Kata Sandi" name="katasandi" required>
-			</div>
 			<div class="col-md-4">
-			  <label for="inputState" class="form-label">Status</label>
-			  <select class="form-control" aria-label="Default select example" name="level">
-				<option selected disabled>Status</option>
+			  <label for="inputState" class="form-label">Ruangan</label>
+			  <select class="form-control" aria-label="Default select example" name="blokruang">
+				<option selected disabled>>--Ruangan--<</option>
 				<option value="Administrator">Administrator</option>
 				<option value="Kepala TU">Kepala TU</option>
 				<option value="Karyawan">Karyawan</option>
