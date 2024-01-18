@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class tbuser extends Model
 {
     protected $table = 'tbuser';
-    protected $fillable = [
-        'namalengkap',
-        'jeniskelamin',
-        'username',
-        'katasandi',
-        'level',
-    ];
+    // protected $fillable = [
+    //     'namalengkap',
+    //     'jeniskelamin',
+    //     'username',
+    //     'katasandi',
+    //     'level',
+    // ];
+
+    protected $guarded = ['id'];
 
     public function getRememberToken()
     {

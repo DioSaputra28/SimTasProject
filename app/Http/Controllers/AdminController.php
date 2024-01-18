@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\tbuser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -34,10 +35,21 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-       
-        tbuser::create($request->all());
+        
+        $validatedData = $request->validate([
+            'namalengkap' => 'required|max:255',
+            'username'=>'required|min:3|max:255|unique:tbuser',
+            'katasandi' => 'required|min:5|max:255'
+        ]);
 
-        return redirect()->route('pengguna.index')->with('sukses', 'Pengguna baru di Tambahkan.');
+        // $validatedData['katasandi'] = bcrypt($validatedData['katasandi']);
+        $validatedData['katasandi'] = Hash::make($validatedData['katasandi']);
+
+        tbuser::create($validatedData);
+
+        // $request->session()->flush('sukses', 'Data Berhasil Ditambahkan');
+
+        return redirect('/pengguna/create')->with('sukses', 'Data Berhasil Ditambahkan');
     }
 
     /**
