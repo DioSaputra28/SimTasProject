@@ -3,6 +3,11 @@
 @section('container')
 <h1 class="h3 mb-2 text-gray-800">{{ $title }}</h1>
 
+@if(session()->has('sukses'))
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+		{{ session('sukses') }}
+	</div>
+@endif
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
 	<div class="card-header py-3 d-flex justify-content-end">
@@ -14,7 +19,13 @@
 			@csrf
 			<div class="col-md-6">
 			  <label for="inputEmail4" class="form-label">Nama Legkap</label>
-			  <input type="text" class="form-control" placeholder="Nama Lengkap" name="namalengkap" required>
+			  <input type="text" class="form-control" @error('namalengkap') is-invalid
+				@enderror placeholder="Nama Lengkap" name="namalengkap" required>
+				@error('namalengkap')
+					<div class="invalid-feedback">
+						{{ $message }}
+					</div>
+				@enderror
 			</div>
 			<div class="col-md-6">
 			  <label for="inputPassword4" class="form-label">Jenis Kelamin</label>
@@ -30,7 +41,7 @@
 			</div>
 			<div class="col-6">
 			  <label for="inputAddress2" class="form-label">Kata Sandi</label>
-			  <input type="text" class="form-control" placeholder="Kata Sandi" name="katasandi" required>
+			  <input type="password" class="form-control" placeholder="Kata Sandi" name="katasandi" required>
 			</div>
 			<div class="col-md-4">
 			  <label for="inputState" class="form-label">Status</label>
